@@ -1,12 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Issues Tracker</title>
+<link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <p>hi the worls how are you long tie nno see </p>
-    
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-container">
+
+    <div class="login-card">
+        <img src="assets/logo.png" class="logo">
+
+        <h2>GitHub Issues Tracker</h2>
+        <p>Sign in to manage your issues</p>
+
+        <input type="text" id="username" placeholder="Enter Username">
+        <input type="password" id="password" placeholder="Enter Password">
+
+        <button id="loginBtn">Sign In</button>
+
+        <p class="demo">Demo Credentials</p>
+        <p>Username: admin</p>
+        <p>Password: admin123</p>
+    </div>
+
+</div>
+
+
+<!-- MAIN PAGE -->
+<div id="mainPage" class="hidden">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+<div class="logo-area">
+GitHub Issues Tracker
+</div>
+
+<div class="search-area">
+<input type="text" id="searchInput" placeholder="Search issues...">
+<button id="searchBtn">Search</button>
+</div>
+
+</nav>
+
+
+<!-- TABS -->
+<div class="tabs">
+
+<button class="tab active" data-status="all">All</button>
+<button class="tab" data-status="open">Open</button>
+<button class="tab" data-status="closed">Closed</button>
+
+</div>
+
+
+<!-- INFO -->
+<div class="issue-info">
+
+<div>
+<h3 id="issueCount">0 Issues</h3>
+<p>Track and manage your project issues</p>
+</div>
+
+<div>
+<span class="marker open-marker"></span> Open
+<span class="marker closed-marker"></span> Closed
+</div>
+
+</div>
+
+
+<!-- LOADING -->
+<div id="loader" class="loader hidden">Loading...</div>
+
+
+<!-- ISSUE CARDS -->
+<div id="issuesContainer" class="issues-grid"></div>
+
+
+</div>
+
+
+
+<!-- MODAL -->
+<div id="issueModal" class="modal hidden">
+
+<div class="modal-content">
+
+<h2 id="modalTitle"></h2>
+
+<p id="modalDescription"></p>
+
+<p><b>Status:</b> <span id="modalStatus"></span></p>
+<p><b>Priority:</b> <span id="modalPriority"></span></p>
+<p><b>Author:</b> <span id="modalAuthor"></span></p>
+<p><b>Assignee:</b> <span id="modalAssignee"></span></p>
+<p><b>Created:</b> <span id="modalDate"></span></p>
+
+<button id="closeModal">Close</button>
+
+</div>
+
+</div>
+
+
+<script src="index.js"></script>
 </body>
 </html>
