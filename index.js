@@ -97,4 +97,39 @@ function displayIssues(issues) {
   });
 }
 
-/
+/* TABS */
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    tabs.forEach((t) => t.classList.remove("active"));
+    tab.classList.add("active");
+
+    const status = tab.dataset.status;
+
+    if (status === "all") {
+      displayIssues(allIssues);
+    } else {
+      const filtered = allIssues.filter((i) => i.status === status);
+
+      displayIssues(filtered);
+    }
+  });
+});
+
+/* SEARCH */
+
+searchBtn.addEventListener("click", searchIssues);
+
+async function searchIssues() {
+  const text = searchInput.value;
+
+  const res = await fetch(
+    `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`,
+  );
+
+  const data = await res.json();
+
+  displayIssues(data.data);
+}
+
+/* MODAL */
