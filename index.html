@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,26 +13,27 @@
 <!-- LOGIN PAGE -->
 <div id="loginPage" class="login-container">
 
-    <div class="login-card">
-        <img src="assets/github-logo.png" class="logo">
+<div class="login-card">
+<img src="assets/github-logo.png" class="logo">
 
-        <h2>GitHub Issues Tracker</h2>
-        <p>Sign in to manage your issues</p>
+<h2>GitHub Issues Tracker</h2>
+<p>Sign in to manage your issues</p>
 
-        <input type="text" id="username" placeholder="Enter Username">
-        <input type="password" id="password" placeholder="Enter Password">
+<input type="text" id="username" placeholder="Enter Username">
+<input type="password" id="password" placeholder="Enter Password">
 
-        <button id="loginBtn">Sign In</button>
+<button id="loginBtn">Sign In</button>
 
-        <p class="demo">Demo Credentials</p>
-        <p>Username: admin</p>
-        <p>Password: admin123</p>
-    </div>
+<p class="demo">Demo Credentials</p>
+<p>Username: admin</p>
+<p>Password: admin123</p>
+
+</div>
 
 </div>
 
 
-<!-- MAIN PAGE (start hidden; JS will toggle) -->
+<!-- MAIN PAGE -->
 <div id="mainPage" class="hidden">
 
 <!-- NAVBAR -->
@@ -49,17 +51,22 @@ GitHub Issues Tracker
 </nav>
 
 
-<!-- TABS -->
-<div class="tabs">
+<!-- TABS CARD -->
+<div class="tabs-card">
 
+<div class="tabs">
 <button class="tab active" data-status="all">All</button>
 <button class="tab" data-status="open">Open</button>
 <button class="tab" data-status="closed">Closed</button>
+</div>
 
 </div>
 
 
-<!-- INFO -->
+<!-- ISSUES CARD -->
+<div class="issues-card">
+
+<!-- ISSUE INFO -->
 <div class="issue-info">
 
 <div>
@@ -67,21 +74,20 @@ GitHub Issues Tracker
 <p>Track and manage your project issues</p>
 </div>
 
-<div>
+<div class="status-markers">
 <span class="marker open-marker"></span> Open
 <span class="marker closed-marker"></span> Closed
 </div>
 
 </div>
 
-
 <!-- LOADING -->
 <div id="loader" class="loader hidden">Loading...</div>
 
-
-<!-- ISSUE CARDS -->
+<!-- ISSUE GRID -->
 <div id="issuesContainer" class="issues-grid"></div>
 
+</div>
 
 </div>
 
@@ -108,7 +114,7 @@ GitHub Issues Tracker
 
 </div>
 
-
 <script src="index.js"></script>
+
 </body>
 </html>
