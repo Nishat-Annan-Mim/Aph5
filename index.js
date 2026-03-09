@@ -62,3 +62,39 @@ async function loadIssues() {
   loader.classList.add("hidden");
 }
 
+/* DISPLAY ISSUES */
+
+function displayIssues(issues) {
+  issuesContainer.innerHTML = "";
+
+  issueCount.innerText = issues.length + " Issues";
+
+  issues.forEach((issue) => {
+    const card = document.createElement("div");
+
+    card.classList.add("issue-card");
+
+    if (issue.status === "open") {
+      card.classList.add("issue-open");
+    } else {
+      card.classList.add("issue-closed");
+    }
+
+    card.innerHTML = `
+
+<h4>${issue.title}</h4>
+<p>${issue.description.substring(0, 80)}...</p>
+
+<p>Status: ${issue.status}</p>
+<p>Priority: ${issue.priority}</p>
+<p>Author: ${issue.author}</p>
+
+`;
+
+    card.addEventListener("click", () => openModal(issue.id));
+
+    issuesContainer.appendChild(card);
+  });
+}
+
+/
