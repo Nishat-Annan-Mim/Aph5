@@ -4,17 +4,28 @@ body {
     background: #f5f5f5;
 }
 
+/* utility helper: force hide any element regardless of specificity */
 .hidden {
-    display: none;
+    display: none !important;
 }
+
 
 /* LOGIN */
 
 .login-container {
+    position: relative;
+    z-index: 10;
+    /* ensure it sits above main content */
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* make sure the main page can sit underneath */
+#mainPage {
+    position: relative;
+    z-index: 1;
 }
 
 .login-card {
@@ -110,6 +121,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
+    /* ensure modal overlays everything */
 }
 
 .modal-content {

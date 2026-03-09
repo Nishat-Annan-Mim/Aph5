@@ -30,13 +30,23 @@ let allIssues = [];
 
 /* LOGIN */
 
+// ensure the initial state never shows the main section by accident
+document.addEventListener("DOMContentLoaded", () => {
+  loginPage.classList.remove("hidden");
+  mainPage.classList.add("hidden");
+  modal.classList.add("hidden");
+});
+
 loginBtn.addEventListener("click", () => {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
   if (username === "admin" && password === "admin123") {
     loginPage.classList.add("hidden");
+    loginPage.removeAttribute("style"); // just in case
+
     mainPage.classList.remove("hidden");
+    mainPage.removeAttribute("style"); // ensure it's visible
 
     loadIssues();
   } else {
@@ -133,3 +143,27 @@ async function searchIssues() {
 }
 
 /* MODAL */
+
+async function openModal(id) {
+  modal.classList.remove("hidden");
+
+  const res = await fetch(
+    `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`,
+  );
+
+  const data = await res.json();
+
+  const issue = data.data;
+
+  modalTitle.innerText = issue.title;
+  modalDescription.innerText = issue.description;
+  modalStatus.innerText = issue.status;
+  modalPriority.innerText = issue.priority;
+  modalAuthor.innerText = issue.author;
+  modalAssignee.innerText = issue.assignee || "None";
+  modalDate.innerText = issue.createdAt;
+}
+
+closeModal.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
